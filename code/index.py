@@ -65,7 +65,7 @@ def handler(event, context):
 # Construct http response object
     responseObject = {}
     if(empty):
-        responseObject['error']= 'No clinic available'
+        responseObject['data']= {'error':'No clinic available'}
     else:
         responseObject['data']= branchQueue
     return responseObject
