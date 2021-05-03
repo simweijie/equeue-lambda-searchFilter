@@ -29,7 +29,7 @@ def handler(event, context):
 ## Retrieve Data
     # note hardcode +8hr due to USA time
     print("inputs:")
-    print("clinicId: " + event['clinicId'] + "   district: " + event['district'])
+    # print("clinicId: " + event['clinicId'] + "   district: " + event['district'])
     query = "SELECT b.*,op.opens,op.closes, count(q.status='Q') \
         FROM Branch b, Clinic c, OpeningHours op, Queue q \
         WHERE b.clinicId=c.id AND b.id=op.branchId AND b.id=q.branchId \
