@@ -34,7 +34,7 @@ def handler(event, context):
         FROM Branch b, Clinic c, OpeningHours op, Queue q \
         WHERE b.clinicId=c.id AND b.id=op.branchId AND b.id=q.branchId \
         AND c.id='{}' AND b.district='{}' AND current_time+ interval 8 hour BETWEEN opens AND closes \
-        AND op.dayOfWeek=dayofweek(now())".format(event['clinicId'],event['district'])    
+        AND op.dayOfWeek=dayofweek(now()) GROUP BY b.id".format(event['clinicId'],event['district'])    
     cur.execute(query)
     connection.commit()
 ## Construct body of the response object
